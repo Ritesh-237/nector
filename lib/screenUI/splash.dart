@@ -18,6 +18,7 @@ class _SplashState extends State<Splash> {
     ScreenUtil.init();
   }
 
+//Go to Home Page
   goToHomePage() async {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       Navigator.pushReplacement(
