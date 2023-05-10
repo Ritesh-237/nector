@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nector/screenUI/mobile_login.dart';
 import 'package:nector/screenUI/navigator.dart';
-import 'package:nector/utility/extension.dart';
 import 'package:nector/utility/images.dart';
 
 class LogInPage extends StatefulWidget {
@@ -71,7 +70,7 @@ class _LogInPageState extends State<LogInPage> {
                             builder: (context) => const MobileLogIn(),
                           ));
 
-                      context.push(const MobileLogIn());
+                      // context.push(const MobileLogIn());
                     },
                     child: Container(
                       height: 40,

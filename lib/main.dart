@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:nector/assets/providers/provider.dart';
 import 'package:nector/screenUI/splash.dart';
 import 'package:nector/utility/colors.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    Provider(create: (_) => AddressProvider1()),
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

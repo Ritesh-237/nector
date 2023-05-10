@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:nector/screenUI/apicall.dart';
 import 'package:nector/utility/colors.dart';
+import 'package:nector/utility/images.dart';
+import 'package:scroll_page_view/scroll_page.dart';
 
 import '../utility/data.dart';
 
@@ -39,28 +42,58 @@ class MainPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  // ignore: prefer_const_constructors
-                  Text(
-                    "Exclusive Offers",
-                    style: TextStyle(
-                      fontSize: 25,
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: SizedBox(
+                  height: 120,
+                  child: ScrollPageView(
+                    delay: const Duration(seconds: 5),
+                    checkedIndicatorColor: Colors.green,
+                    indicatorColor: Colors.grey,
+                    scrollDirection: Axis.horizontal,
+                    controller: ScrollPageController(),
+                    children: [
+                      Image.asset(
+                        GroceryImages.bannerImage,
+                        height: 120,
+                        fit: BoxFit.cover,
+                      ),
+                      Image.asset(
+                        GroceryImages.bannerImage,
+                        height: 120,
+                        fit: BoxFit.cover,
+                      ),
+                      Image.asset(
+                        GroceryImages.bannerImage,
+                        height: 120,
+                        fit: BoxFit.cover,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    // ignore: prefer_const_constructors
+                    Text(
+                      "Exclusive Offers",
+                      style: TextStyle(
+                        fontSize: 25,
+                      ),
                     ),
-                  ),
-                  Text(
-                    "see all",
-                    style: TextStyle(
-                        color: AppColours.primarycolour, fontSize: 15),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
+                    Text(
+                      "see all",
+                      style: TextStyle(
+                          color: AppColours.primarycolour, fontSize: 15),
+                    ),
+                  ],
+                ),
               ),
               SizedBox(
                 height: 260,
@@ -176,15 +209,15 @@ class MainPage extends StatelessWidget {
 }
 
 class OfferBox extends StatelessWidget {
-  OfferBox(
+  const OfferBox(
       {required this.imgData,
       required this.productName,
       required this.quantity,
       super.key});
 
-  String imgData;
-  String productName;
-  String quantity;
+  final String imgData;
+  final String productName;
+  final String quantity;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -253,10 +286,18 @@ class OfferBox extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.green,
                       borderRadius: BorderRadius.circular(12)),
-                  child: const Center(
-                    child: Icon(
-                      Icons.add,
-                      color: Colors.white,
+                  child: Center(
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => const Api())));
+                      },
+                      child: const Icon(
+                        Icons.add,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
@@ -307,39 +348,5 @@ class Groceries extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class FirstPage extends StatefulWidget {
-  const FirstPage({super.key});
-
-  @override
-  State<FirstPage> createState() => _FirstPageState();
-}
-
-class _FirstPageState extends State<FirstPage> {
-  int index = 0;
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (builder) => SecondPage(
-                      secondIndex: index,
-                    )));
-      },
-    );
-  }
-}
-
-class SecondPage extends StatelessWidget {
-  final int secondIndex;
-  const SecondPage({required this.secondIndex, super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nector/screenUI/place_order.dart';
 import 'package:nector/utility/colors.dart';
+import 'package:nector/utility/screen_util.dart';
 
 class Cart extends StatelessWidget {
   const Cart({super.key});
@@ -255,95 +256,99 @@ class Cart extends StatelessWidget {
   }
 }
 
-class Cartview extends StatelessWidget {
+class Cartview extends StatefulWidget {
   const Cartview({super.key});
 
   @override
+  State<Cartview> createState() => _CartviewState();
+}
+
+class _CartviewState extends State<Cartview> {
+  int price = 0;
+  @override
   Widget build(BuildContext context) {
-    return (Column(
-      children: [
-        const SizedBox(
-          height: 20,
+    return (Column(children: [
+      SizedBox(
+        height: 20.toHeight,
+      ),
+      ListTile(
+        leading: Image.asset("lib/assets/images/capcicum.png"),
+        title: Row(
+          children: [
+            RichText(
+                text: TextSpan(
+                    style: const TextStyle(color: Colors.black),
+                    children: [
+                  TextSpan(
+                      text: "Bell Pepper Red\n",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 15.toFont)),
+                  const TextSpan(text: "1kg,price"),
+                ])),
+          ],
         ),
-        ListTile(
-          leading: Image.asset("lib/assets/images/capcicum.png"),
-          title: Row(
+        subtitle: Padding(
+          padding: EdgeInsets.only(top: 8.0.toHeight),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              RichText(
-                  text: const TextSpan(
-                      style: TextStyle(color: Colors.black),
-                      children: [
-                    TextSpan(
-                        text: "Bell Pepper Red\n",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15)),
-                    TextSpan(text: "1kg,price"),
-                  ])),
-              const SizedBox(
-                width: 130,
-              ),
-              const Icon(
-                Icons.close,
-                size: 26,
-              )
-            ],
-          ),
-          subtitle: Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: Row(
-              children: [
-                Container(
-                    height: 25,
-                    width: 25,
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(7)),
-                    child: const Center(
-                        child: Text(
-                      "-",
-                      style: TextStyle(fontSize: 25),
-                    ))),
-                const SizedBox(
-                  width: 15,
-                ),
-                const Text(
-                  "1",
-                  style: TextStyle(fontSize: 20),
-                ),
-                const SizedBox(
-                  width: 15,
-                ),
-                Container(
-                  height: 25,
-                  width: 25,
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    price--;
+                  });
+                },
+                child: Container(
+                  height: 25.toWidth,
+                  width: 25.toWidth,
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey),
                       borderRadius: BorderRadius.circular(7)),
-                  child: const Center(
-                    child: Icon(
-                      Icons.add,
-                      size: 18,
-                    ),
+                  child: Center(
+                    child: Icon(Icons.minimize, size: 18.toWidth),
                   ),
                 ),
-                const SizedBox(
-                  width: 120,
+              ),
+              SizedBox(
+                width: 15.toWidth,
+              ),
+              Text(
+                "$price",
+                style: TextStyle(fontSize: 20.toFont),
+              ),
+              SizedBox(
+                width: 15.toWidth,
+              ),
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    price++;
+                  });
+                },
+                child: Container(
+                  height: 25.toWidth,
+                  width: 25.toWidth,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(7)),
+                  child: Center(
+                    child: Icon(Icons.add, size: 18.toWidth),
+                  ),
                 ),
-                const Text(
-                  "\$4.99",
-                  style: TextStyle(color: Colors.black, fontSize: 20),
-                )
-              ],
-            ),
+              ),
+            ],
           ),
         ),
-        const SizedBox(
-          height: 20,
+        trailing: Column(
+          children: [
+            const Icon(Icons.close),
+            const SizedBox(
+              height: 10,
+            ),
+            Text("RS ₹ ${price == 0 ? 40 : 40 * price}")
+          ],
         ),
-        const Divider(
-          color: Colors.black12,
-        )
-      ],
-    ));
+      )
+    ]));
   }
 }

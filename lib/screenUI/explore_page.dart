@@ -18,6 +18,15 @@ class _ExplorePageState extends State<ExplorePage> {
     return Scaffold(
       backgroundColor: AppColours.appwhite,
       appBar: AppBar(
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+        ),
         elevation: 0,
         backgroundColor: AppColours.appwhite,
         title: const Padding(

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:nector/utility/colors.dart';
 
 class FavouriteTile extends StatelessWidget {
-  FavouriteTile({required this.image, required this.name});
-  String image;
-  String name;
+  const FavouriteTile({super.key, required this.image, required this.name});
+  final String image;
+  final String name;
   @override
   Widget build(BuildContext context) {
     return Column(children: [

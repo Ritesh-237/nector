@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nector/screenUI/welcome.dart';
 import 'package:nector/utility/colors.dart';
+import 'package:nector/utility/screen_util.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -14,6 +15,7 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
     goToHomePage();
+    ScreenUtil.init();
   }
 
   goToHomePage() async {
