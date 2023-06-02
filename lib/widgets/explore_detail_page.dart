@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:nector/utility/colors.dart';
 import 'package:nector/utility/images.dart';
 
-class SearchExplorer extends StatelessWidget {
+class SearchExplorer extends StatefulWidget {
   const SearchExplorer({super.key});
 
+  @override
+  State<SearchExplorer> createState() => _SearchExplorerState();
+}
+
+class _SearchExplorerState extends State<SearchExplorer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,21 +89,24 @@ class SearchExplorer extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text("\$4.99"),
+                        const Text(""),
                         // const SizedBox(
                         //   width: 70,
                         // ),
-                        Container(
-                          height: 35,
-                          width: 35,
-                          decoration: BoxDecoration(
-                              color: AppColours.primarycolour,
-                              borderRadius: BorderRadius.circular(12)),
-                          child: const Center(
-                            child: Text(
-                              "+",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20),
+                        InkWell(
+                          onTap: () {},
+                          child: Container(
+                            height: 35,
+                            width: 35,
+                            decoration: BoxDecoration(
+                                color: AppColours.primarycolour,
+                                borderRadius: BorderRadius.circular(12)),
+                            child: const Center(
+                              child: Text(
+                                "+",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              ),
                             ),
                           ),
                         ),
@@ -112,16 +120,5 @@ class SearchExplorer extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-abstract class CustomStatefulClass {
-  Widget build(BuildContext context);
-}
-
-class FirstPage extends CustomStatefulClass {
-  @override
-  Widget build(BuildContext context) {
-    throw UnimplementedError();
   }
 }

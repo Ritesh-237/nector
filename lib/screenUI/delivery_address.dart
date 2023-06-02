@@ -14,8 +14,10 @@ class DeliveryAddress extends StatefulWidget {
 class _DeliveryAddressState extends State<DeliveryAddress> {
   @override
   Widget build(BuildContext context) {
-    final addressprovider =
-        Provider.of<AddressProvider1>(context, listen: true);
+    final addressProvider = Provider.of<AddressProvider1>(
+      context,
+      listen: true,
+    );
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -61,7 +63,7 @@ class _DeliveryAddressState extends State<DeliveryAddress> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        addressprovider.setIndex(1);
+                        addressProvider.setIndex(1);
                       },
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,7 +72,7 @@ class _DeliveryAddressState extends State<DeliveryAddress> {
                             height: 25,
                             width: 25,
                             decoration: BoxDecoration(
-                                color: addressprovider.points == 1
+                                color: addressProvider.points == 1
                                     ? Colors.green
                                     : Colors.white,
                                 borderRadius: BorderRadius.circular(15),
@@ -138,7 +140,7 @@ class _DeliveryAddressState extends State<DeliveryAddress> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        addressprovider.setIndex(2);
+                        addressProvider.setIndex(2);
                       },
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -147,7 +149,7 @@ class _DeliveryAddressState extends State<DeliveryAddress> {
                             height: 25,
                             width: 25,
                             decoration: BoxDecoration(
-                                color: addressprovider.points == 2
+                                color: addressProvider.points == 2
                                     ? Colors.green
                                     : Colors.white,
                                 border: Border.all(color: Colors.green),

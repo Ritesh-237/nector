@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nector/screenUI/exploredetailpage.dart';
 import 'package:nector/screenUI/search_result.dart';
 import 'package:nector/utility/colors.dart';
 import 'package:nector/utility/data.dart';
+import 'package:nector/widgets/explore_detail_page.dart';
 
 class ExplorePage extends StatefulWidget {
   const ExplorePage({super.key});
@@ -33,7 +33,7 @@ class _ExplorePageState extends State<ExplorePage> {
           padding: EdgeInsets.only(left: 54.0),
           child: Text(
             "Find Products",
-            style: TextStyle(fontSize: 25, color: Colors.black54),
+            style: TextStyle(fontSize: 25, color: Colors.grey),
           ),
         ),
       ),
@@ -73,7 +73,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
           ),
           const SizedBox(
-            height: 20,
+            height: 10,
           ),
           Expanded(
             child: GridView.count(
@@ -127,16 +127,17 @@ class ExplorerGroceries extends StatelessWidget {
           const SizedBox(
             height: 25,
           ),
-          Image.asset(imageData),
+          Image.asset(
+            imageData,
+            height: 80,
+          ),
           const SizedBox(
             height: 15,
           ),
-          Align(
-            alignment: Alignment.center,
-            child: Text(
-              name,
-              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-            ),
+          Text(
+            name,
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
           ),
         ],
       ),

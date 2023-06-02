@@ -31,7 +31,23 @@ List<String> offerQuantities = [
   "12pcs, 2kg"
 ];
 
-List<String> bestSellingImages = [
+List<String> getBestSellingImages = [
+  GroceryImages.capcicumImage,
+  GroceryImages.gingerImage,
+  GroceryImages.capcicumImage,
+  GroceryImages.gingerImage,
+  GroceryImages.capcicumImage,
+  GroceryImages.gingerImage,
+  GroceryImages.capcicumImage,
+  GroceryImages.gingerImage,
+  GroceryImages.capcicumImage,
+  GroceryImages.gingerImage,
+  GroceryImages.capcicumImage,
+  GroceryImages.gingerImage,
+  GroceryImages.capcicumImage,
+  GroceryImages.gingerImage,
+  GroceryImages.capcicumImage,
+  GroceryImages.gingerImage,
   GroceryImages.capcicumImage,
   GroceryImages.gingerImage,
   GroceryImages.capcicumImage,
@@ -59,6 +75,28 @@ List<String> groceriesImages = [
 ];
 
 List<String> groceriesName = ["Pulses", "Rice", "Pulses"];
+List<String> vegetableNames = [
+  "Red Capcicum ",
+  "Organic Ginger",
+  "Red Capcicum ",
+  "Organic Ginger",
+  "Red Capcicum ",
+  "Organic Ginger",
+  "Red Capcicum ",
+  "Organic Ginger",
+  "Red Capcicum ",
+  "Organic Ginger",
+  "Red Capcicum ",
+  "Organic Ginger",
+  "Red Capcicum ",
+  "Organic Ginger",
+  "Red Capcicum ",
+  "Organic Ginger",
+  "Red Capcicum ",
+  "Organic Ginger",
+  "Red Capcicum ",
+  "Organic Ginger"
+];
 
 List<Color> groceriesTileColor = [
   AppColours.groceryPulsesColor,
@@ -67,8 +105,8 @@ List<Color> groceriesTileColor = [
 ];
 
 List<String> exploreNames = [
-  "Fresh Fruits & Vegetables",
-  "Cooking Oil & Ghee",
+  "Fresh Fruits &\nVegetables",
+  "Cooking Oil &\nGhee",
   "Meat & Fish",
   "Bakery & Snacks",
   "Dairy & Eggs",

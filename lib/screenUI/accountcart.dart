@@ -4,6 +4,7 @@ import 'package:nector/screenUI/delivery_address.dart';
 import 'package:nector/screenUI/help_explorer.dart';
 import 'package:nector/screenUI/my_detail_page.dart';
 import 'package:nector/screenUI/orders_explorer.dart';
+import 'package:nector/utility/colors.dart';
 
 class Accountcart extends StatefulWidget {
   const Accountcart({super.key});
@@ -14,6 +15,7 @@ class Accountcart extends StatefulWidget {
 
 class _AccountcartState extends State<Accountcart> {
   bool isLoaded = false;
+  double index = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,9 +31,14 @@ class _AccountcartState extends State<Accountcart> {
           CircleAvatar(
             radius: 30,
             backgroundColor: Colors.blue.shade100,
-            child: const Icon(
-              Icons.person,
-              size: 40,
+            child: InkWell(
+              onTap: () {
+                showErrorToast(context);
+              },
+              child: const Icon(
+                Icons.person,
+                size: 40,
+              ),
             ),
           ),
           const SizedBox(
@@ -198,6 +205,8 @@ class _AccountcartState extends State<Accountcart> {
           Navigator.pop(context);
         },
         child: const Chip(
+          elevation: 5,
+          backgroundColor: AppColours.appwhite,
           avatar: Icon(
             Icons.logout,
             color: Colors.green,
@@ -208,7 +217,21 @@ class _AccountcartState extends State<Accountcart> {
           ),
         ),
       ),
-      const Card()
+      Slider(
+          min: 0,
+          max: 100,
+          value: index,
+          onChanged: (value) {
+            setState(() {
+              index = value;
+            });
+          }),
+      Text("volume : ${index.round().toString()}")
     ]));
   }
+}
+
+showErrorToast(BuildContext context) {
+  return ScaffoldMessenger.of(context)
+      .showSnackBar(const SnackBar(content: Text("SomeThing Went Wrong")));
 }

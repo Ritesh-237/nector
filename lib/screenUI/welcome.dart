@@ -20,9 +20,7 @@ class Welcome extends StatelessWidget {
           Center(
             child: Column(
               children: [
-                const SizedBox(
-                  height: 520,
-                ),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.60),
                 Image.asset("lib/assets/images/onboarding_carrot.png"),
                 const SizedBox(
                   height: 10,

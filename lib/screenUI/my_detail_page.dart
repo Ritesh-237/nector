@@ -31,15 +31,12 @@ class MyDetail extends StatelessWidget {
             const Divider(
               color: Colors.black45,
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            Image.asset(
-              "lib/assets/images/profile.png",
-              height: 150,
-            ),
-            const SizedBox(
-              height: 10,
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Image.asset(
+                "lib/assets/images/profile.png",
+                height: 150,
+              ),
             ),
             const Text(
               "Customer Name",
@@ -50,53 +47,53 @@ class MyDetail extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Card(
-                  elevation: 2,
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                        border:
-                            OutlineInputBorder(borderSide: BorderSide.none)),
-                  )),
+              child: TextFormField(
+                decoration: const InputDecoration(
+                    focusColor: Colors.green,
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black),
+                        borderRadius: BorderRadius.all(Radius.circular(10)))),
+              ),
             ),
             const SizedBox(
               height: 10,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Card(
-                  elevation: 2,
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                        border:
-                            OutlineInputBorder(borderSide: BorderSide.none)),
-                  )),
+              child: TextFormField(
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black),
+                        borderRadius: BorderRadius.all(Radius.circular(10)))),
+              ),
             ),
             const SizedBox(
               height: 10,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Card(
-                  elevation: 2,
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        prefixIcon: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: const [
-                            Padding(
-                              padding: EdgeInsets.only(left: 16.0),
-                              child: Text("+91"),
-                            ),
-                            Icon(
-                              Icons.flag,
-                              color: Colors.green,
-                            )
-                          ],
+              child: TextFormField(
+                decoration: InputDecoration(
+                    prefixIcon: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        Padding(
+                          padding: EdgeInsets.only(left: 16.0),
+                          child: Text("+91"),
                         ),
-                        fillColor: Colors.black,
-                        border: const OutlineInputBorder(
-                            borderSide: BorderSide.none)),
-                  )),
+                        Icon(
+                          Icons.flag,
+                          color: Colors.green,
+                        )
+                      ],
+                    ),
+                    fillColor: Colors.black,
+                    border: const OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.black,
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(10)))),
+              ),
             ),
             const SizedBox(
               height: 40,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nector/screenUI/welcome.dart';
 import 'package:nector/utility/colors.dart';
-import 'package:nector/utility/screen_util.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -13,20 +12,15 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> {
   @override
   void initState() {
+    goToHomepage();
     super.initState();
-    goToHomePage();
-    ScreenUtil.init();
   }
 
-//Go to Home Page
-  goToHomePage() async {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const Welcome(),
-          ));
-    });
+  goToHomepage() async {
+    await Future.delayed(const Duration(seconds: 2));
+
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const Welcome()));
   }
 
   @override
