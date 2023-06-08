@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:nector/models/fruit_data_response.dart';
 
 class FruitApi extends StatefulWidget {
+  static const routeName = '/FruitApi';
   const FruitApi({super.key});
 
   @override

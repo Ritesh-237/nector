@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nector/assets/repository/api_call.dart';
 import 'package:nector/utility/colors.dart';
 
 class OfferBox extends StatelessWidget {
@@ -80,18 +79,18 @@ class OfferBox extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.green,
                       borderRadius: BorderRadius.circular(12)),
-                  child: Center(
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) => const Api())));
-                      },
-                      child: const Icon(
-                        Icons.add,
-                        color: Colors.white,
-                      ),
+                  child: const Center(
+                    // child: GestureDetector(
+                    //   onTap: () {
+                    //     Navigator.push(
+                    //         context,
+                    //         MaterialPageRoute(
+                    //             builder: ((context) => const Api())));
+                    //   },
+                    child: Icon(
+                      Icons.add,
+                      color: Colors.white,
+                      // ),
                     ),
                   ),
                 ),

@@ -9,7 +9,7 @@ import '../utility/data.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
-
+  static const routeName = '/mainPage';
   @override
   State<MainPage> createState() => _MainPageState();
 }
@@ -19,7 +19,7 @@ class _MainPageState extends State<MainPage> {
   double index = 0;
   showErrorToast(BuildContext context) {
     return ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      content: Text("Something Went Wrong"),
+      content: Text("coming soon"),
       duration: Duration(seconds: 1),
     ));
   }
@@ -71,19 +71,18 @@ class _MainPageState extends State<MainPage> {
                     children: [
                       Image.asset(
                         GroceryImages.bannerImage,
-                        height: 120,
+                        // height: 120,
                         fit: BoxFit.cover,
                       ),
                       Image.asset(
                         GroceryImages.bannerImage,
-                        height: 120,
+                        // height: 120,
                         fit: BoxFit.cover,
                       ),
                       Image.asset(
-                        GroceryImages.bannerImage,
-                        height: 120,
+                        GroceryImages.bannerimage,
                         fit: BoxFit.cover,
-                      )
+                      ),
                     ],
                   ),
                 ),

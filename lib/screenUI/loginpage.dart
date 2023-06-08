@@ -5,6 +5,7 @@ import 'package:nector/utility/images.dart';
 import 'package:nector/utility/screen_util.dart';
 
 class LogInPage extends StatefulWidget {
+  static const routeName = '/LogInPage';
   const LogInPage({super.key});
 
   @override
@@ -71,11 +72,7 @@ class _LogInPageState extends State<LogInPage> {
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const MobileLogIn(),
-                          ));
+                      Navigator.pushNamed(context, MobileLogIn.routeName);
 
                       // context.push(const MobileLogIn());
                     },
@@ -90,11 +87,7 @@ class _LogInPageState extends State<LogInPage> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const RootNavigator(),
-                          ));
+                      Navigator.pushNamed(context, RootNavigator.routeName);
                     },
                     child: Container(
                       height: 40,
@@ -116,10 +109,7 @@ class _LogInPageState extends State<LogInPage> {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const RootNavigator()));
+                  Navigator.pushNamed(context, RootNavigator.routeName);
                 },
                 child: Container(
                   height: 60,
@@ -153,11 +143,7 @@ class _LogInPageState extends State<LogInPage> {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const RootNavigator(),
-                      ));
+                  Navigator.pushNamed(context, RootNavigator.routeName);
                 },
                 child: Container(
                   height: 60,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nector/assets/providers/provider.dart';
+import 'package:nector/screenUI/routes.dart';
 import 'package:nector/screenUI/splash.dart';
 import 'package:provider/provider.dart';
 
@@ -15,15 +16,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: "Nector",
       // theme: ThemeData(
       //     bottomSheetTheme: BottomSheetThemeData(
       //         modalBackgroundColor: AppColours.appblack.withOpacity(0.4)
       //         )
       //         ),
+
       debugShowCheckedModeBanner: false,
-      home: Splash(),
+      home: const Splash(),
+      routes: Routes.getRoutes(),
     );
   }
 }

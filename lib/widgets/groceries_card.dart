@@ -12,31 +12,41 @@ class Groceries extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 10),
-      height: 80,
-      width: 220,
-      decoration: BoxDecoration(
-          color: tileColor.withOpacity(0.20),
-          borderRadius: BorderRadius.circular(10)),
-      child: Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 14.0),
-            child: Image.asset(
-              imageData,
-              height: 55,
+    return InkWell(
+      onTap: () {
+        showErrorToast(context);
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10),
+        height: 80,
+        width: 220,
+        decoration: BoxDecoration(
+            color: tileColor.withOpacity(0.20),
+            borderRadius: BorderRadius.circular(10)),
+        child: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 14.0),
+              child: Image.asset(
+                imageData,
+                height: 55,
+              ),
             ),
-          ),
-          const SizedBox(
-            width: 25,
-          ),
-          Text(
-            name,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          )
-        ],
+            const SizedBox(
+              width: 25,
+            ),
+            Text(
+              name,
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            )
+          ],
+        ),
       ),
     );
   }
+}
+
+showErrorToast(BuildContext context) {
+  return ScaffoldMessenger.of(context)
+      .showSnackBar(const SnackBar(content: Text("coming soon")));
 }

@@ -5,6 +5,7 @@ import 'package:nector/utility/data.dart';
 import 'package:nector/widgets/explore_detail_page.dart';
 
 class ExplorePage extends StatefulWidget {
+  static const routeName = '/ExplorePage';
   const ExplorePage({super.key});
 
   @override
@@ -54,12 +55,7 @@ class _ExplorePageState extends State<ExplorePage> {
                 decoration: InputDecoration(
                     prefixIcon: InkWell(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SearchResult(
-                                  searchText: searchController.text),
-                            ));
+                        Navigator.pushNamed(context, SearchResult.routeName);
                       },
                       child: const Icon(
                         Icons.search,

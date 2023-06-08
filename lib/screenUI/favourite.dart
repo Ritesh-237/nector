@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:nector/screenUI/fruitsapicall.dart';
 import 'package:nector/utility/data.dart';
 
 class FavouriteCart extends StatefulWidget {
   const FavouriteCart({super.key});
+  static const routeName = '/favouriteCart';
 
   @override
   State<FavouriteCart> createState() => _FavouriteCartState();
 }
 
 class _FavouriteCartState extends State<FavouriteCart> {
+  double index = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,9 +43,9 @@ class _FavouriteCartState extends State<FavouriteCart> {
 }
 
 class Favourite extends StatelessWidget {
-  Favourite({super.key, required this.name, required this.imgData});
-  String name;
-  String imgData;
+  const Favourite({super.key, required this.name, required this.imgData});
+  final String name;
+  final String imgData;
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +58,7 @@ class Favourite extends StatelessWidget {
           color: Colors.black87,
         ),
         InkWell(
-          onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const FruitApi()));
-          },
+          onTap: () => showErrorToast(context),
           child: ListTile(
             leading: SizedBox(
               width: 55,
@@ -94,4 +92,9 @@ class Favourite extends StatelessWidget {
       ],
     );
   }
+}
+
+showErrorToast(BuildContext context) {
+  return ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      duration: Duration(seconds: 1), content: Text("coming soon")));
 }

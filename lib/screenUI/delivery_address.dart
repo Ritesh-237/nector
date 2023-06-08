@@ -5,6 +5,7 @@ import 'package:nector/assets/providers/provider.dart';
 import 'package:provider/provider.dart';
 
 class DeliveryAddress extends StatefulWidget {
+  static const routename = '/DeliveryAddress';
   const DeliveryAddress({super.key});
 
   @override

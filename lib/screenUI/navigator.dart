@@ -8,6 +8,7 @@ import 'package:nector/utility/colors.dart';
 import 'mainpage.dart';
 
 class RootNavigator extends StatefulWidget {
+  static const routeName = '/RootNavigator';
   const RootNavigator({super.key});
 
   @override

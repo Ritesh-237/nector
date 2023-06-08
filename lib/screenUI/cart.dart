@@ -5,6 +5,7 @@ import 'package:nector/utility/data.dart';
 import 'package:nector/widgets/new_cart_product_tile.dart';
 
 class Cart extends StatelessWidget {
+  static const routeName = '/Cart';
   const Cart({super.key});
 
   @override
@@ -173,10 +174,7 @@ class Cart extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: (() {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: ((context) => const Placeorder())));
+                      Navigator.pushNamed(context, Placeorder.routeName);
                     }),
                     child: Container(
                       height: 50,
