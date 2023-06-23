@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:nector/screenUI/loginpage.dart';
 import 'package:nector/utility/colors.dart';
 
-class Welcome extends StatelessWidget {
+class Welcome extends StatefulWidget {
+  static const routeName = '/Welcome';
   const Welcome({super.key});
 
+  @override
+  State<Welcome> createState() => _WelcomeState();
+}
+
+class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,9 +26,7 @@ class Welcome extends StatelessWidget {
           Center(
             child: Column(
               children: [
-                const SizedBox(
-                  height: 520,
-                ),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.60),
                 Image.asset("lib/assets/images/onboarding_carrot.png"),
                 const SizedBox(
                   height: 10,
@@ -47,11 +51,7 @@ class Welcome extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LogInPage(),
-                        ));
+                    Navigator.pushNamed(context, LogInPage.routeName);
                   },
                   child: Container(
                     height: 50,

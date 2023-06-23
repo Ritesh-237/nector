@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:nector/assets/providers/provider.dart';
+import 'package:nector/screenUI/routes.dart';
 import 'package:nector/screenUI/splash.dart';
-import 'package:nector/utility/colors.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider<AddressProvider1>(
+        create: (snapshot) => AddressProvider1())
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -13,11 +18,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Nector",
-      theme: ThemeData(
-          bottomSheetTheme: BottomSheetThemeData(
-              modalBackgroundColor: AppColours.appblack.withOpacity(0.4))),
+      // theme: ThemeData(
+      //     bottomSheetTheme: BottomSheetThemeData(
+      //         modalBackgroundColor: AppColours.appblack.withOpacity(0.4)
+      //         )
+      //         ),
+
       debugShowCheckedModeBanner: false,
       home: const Splash(),
+      routes: Routes.getRoutes(),
     );
   }
 }

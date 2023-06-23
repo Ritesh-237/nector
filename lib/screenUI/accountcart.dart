@@ -4,8 +4,10 @@ import 'package:nector/screenUI/delivery_address.dart';
 import 'package:nector/screenUI/help_explorer.dart';
 import 'package:nector/screenUI/my_detail_page.dart';
 import 'package:nector/screenUI/orders_explorer.dart';
+import 'package:nector/utility/colors.dart';
 
 class Accountcart extends StatefulWidget {
+  static const routeName = '/Accountcart';
   const Accountcart({super.key});
 
   @override
@@ -14,6 +16,7 @@ class Accountcart extends StatefulWidget {
 
 class _AccountcartState extends State<Accountcart> {
   bool isLoaded = false;
+  double index = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,9 +32,14 @@ class _AccountcartState extends State<Accountcart> {
           CircleAvatar(
             radius: 30,
             backgroundColor: Colors.blue.shade100,
-            child: const Icon(
-              Icons.person,
-              size: 40,
+            child: InkWell(
+              onTap: () {
+                errorMessage(context);
+              },
+              child: const Icon(
+                Icons.person,
+                size: 40,
+              ),
             ),
           ),
           const SizedBox(
@@ -70,8 +78,7 @@ class _AccountcartState extends State<Accountcart> {
       ),
       InkWell(
         onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: ((context) => const Orders())));
+          Navigator.pushNamed(context, Orders.routeName);
         },
         child: ListTile(
           leading: Icon(
@@ -91,12 +98,12 @@ class _AccountcartState extends State<Accountcart> {
         ),
       ),
       Divider(
+        thickness: 0.2,
         color: Colors.grey.shade600,
       ),
       InkWell(
         onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: ((context) => const MyDetail())));
+          Navigator.pushNamed(context, MyDetail.routeName);
         },
         child: ListTile(
           leading: Icon(
@@ -115,13 +122,10 @@ class _AccountcartState extends State<Accountcart> {
           ),
         ),
       ),
-      Divider(
-        color: Colors.grey.shade600,
-      ),
+      const Divider(thickness: 0.2, color: Colors.black),
       InkWell(
         onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const DeliveryAddress()));
+          Navigator.pushNamed(context, DeliveryAddress.routename);
         },
         child: ListTile(
           leading: Icon(
@@ -141,12 +145,12 @@ class _AccountcartState extends State<Accountcart> {
         ),
       ),
       Divider(
+        thickness: 0.2,
         color: Colors.grey.shade600,
       ),
       InkWell(
         onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: ((context) => const Help())));
+          Navigator.pushNamed(context, Help.routeName);
         },
         child: ListTile(
           leading: Icon(
@@ -166,12 +170,12 @@ class _AccountcartState extends State<Accountcart> {
         ),
       ),
       Divider(
+        thickness: 0.2,
         color: Colors.grey.shade600,
       ),
       InkWell(
         onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: ((context) => const About())));
+          Navigator.pushNamed(context, About.routeName);
         },
         child: ListTile(
           leading: Icon(
@@ -198,6 +202,8 @@ class _AccountcartState extends State<Accountcart> {
           Navigator.pop(context);
         },
         child: const Chip(
+          elevation: 5,
+          backgroundColor: AppColours.appwhite,
           avatar: Icon(
             Icons.logout,
             color: Colors.green,
@@ -208,7 +214,21 @@ class _AccountcartState extends State<Accountcart> {
           ),
         ),
       ),
-      const Card()
+      // Slider(
+      //     min: 0,
+      //     max: 100,
+      //     value: index,
+      //     onChanged: (value) {
+      //       setState(() {
+      //         index = value;
+      //       });
+      //     }),
+      // Text("volume :${index.round().toString()}")
     ]));
   }
+}
+
+errorMessage(BuildContext context) {
+  return ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      duration: Duration(seconds: 1), content: Text("SomeThing Went Wrong")));
 }

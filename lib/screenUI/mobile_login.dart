@@ -3,6 +3,7 @@ import 'package:nector/screenUI/navigator.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class MobileLogIn extends StatefulWidget {
+  static const routeName = '/MobileLogIn';
   const MobileLogIn({super.key});
 
   @override
@@ -18,8 +19,7 @@ class _MobileLogInState extends State<MobileLogIn> {
       floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.arrow_forward_ios),
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const RootNavigator()));
+            Navigator.pushNamed(context, RootNavigator.routeName);
           }),
       backgroundColor: Colors.white,
       appBar: AppBar(

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SearchResult extends StatefulWidget {
+  static const routeName = '/Searchresult';
   const SearchResult({super.key, required this.searchText});
+
   final String searchText;
 
   @override

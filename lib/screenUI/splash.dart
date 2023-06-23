@@ -1,8 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:nector/screenUI/welcome.dart';
 import 'package:nector/utility/colors.dart';
 
 class Splash extends StatefulWidget {
+  static const routeName = '/Splash';
   const Splash({super.key});
 
   @override
@@ -12,18 +15,14 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> {
   @override
   void initState() {
+    goToHomepage();
     super.initState();
-    goToHomePage();
   }
 
-  goToHomePage() async {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const Welcome(),
-          ));
-    });
+  goToHomepage() async {
+    await Future.delayed(const Duration(seconds: 2));
+
+    Navigator.pushNamed(context, Welcome.routeName);
   }
 
   @override

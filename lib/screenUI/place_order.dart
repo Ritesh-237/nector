@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:nector/utility/colors.dart';
 import 'package:nector/utility/images.dart';
 
-class Placeorder extends StatelessWidget {
+class Placeorder extends StatefulWidget {
+  static const routeName = '/Placeorder';
   const Placeorder({super.key});
 
+  @override
+  State<Placeorder> createState() => _PlaceorderState();
+}
+
+class _PlaceorderState extends State<Placeorder> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
