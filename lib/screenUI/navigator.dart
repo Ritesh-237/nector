@@ -3,10 +3,12 @@ import 'package:nector/screenUI/accountcart.dart';
 import 'package:nector/screenUI/cart.dart';
 import 'package:nector/screenUI/explore_page.dart';
 import 'package:nector/screenUI/favourite.dart';
-import 'package:nector/screenUI/mainpage.dart';
 import 'package:nector/utility/colors.dart';
 
+import 'mainpage.dart';
+
 class RootNavigator extends StatefulWidget {
+  static const routeName = '/RootNavigator';
   const RootNavigator({super.key});
 
   @override
@@ -23,12 +25,6 @@ class _RootNavigatorState extends State<RootNavigator> {
     const Accountcart(),
   ];
 
-  onTapped(int index) {
-    setState(() {
-      selectedScreen = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +35,11 @@ class _RootNavigatorState extends State<RootNavigator> {
           type: BottomNavigationBarType.fixed,
           iconSize: 30,
           currentIndex: selectedScreen,
-          onTap: onTapped,
+          onTap: (value) {
+            setState(() {
+              selectedScreen = value;
+            });
+          },
           items: const [
             BottomNavigationBarItem(
                 icon: Icon(

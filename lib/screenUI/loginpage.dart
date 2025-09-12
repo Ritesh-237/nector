@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nector/screenUI/mobile_login.dart';
 import 'package:nector/screenUI/navigator.dart';
-import 'package:nector/utility/extension.dart';
 import 'package:nector/utility/images.dart';
+import 'package:nector/utility/screen_util.dart';
 
 class LogInPage extends StatefulWidget {
+  static const routeName = '/LogInPage';
   const LogInPage({super.key});
 
   @override
@@ -14,6 +15,12 @@ class LogInPage extends StatefulWidget {
 TextEditingController phonecontroller = TextEditingController();
 
 class _LogInPageState extends State<LogInPage> {
+  @override
+  void initState() {
+    super.initState();
+    ScreenUtil.init();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,13 +72,9 @@ class _LogInPageState extends State<LogInPage> {
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const MobileLogIn(),
-                          ));
+                      Navigator.pushNamed(context, MobileLogIn.routeName);
 
-                      context.push(const MobileLogIn());
+                      // context.push(const MobileLogIn());
                     },
                     child: Container(
                       height: 40,
@@ -84,11 +87,7 @@ class _LogInPageState extends State<LogInPage> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const RootNavigator(),
-                          ));
+                      Navigator.pushNamed(context, RootNavigator.routeName);
                     },
                     child: Container(
                       height: 40,
@@ -110,10 +109,7 @@ class _LogInPageState extends State<LogInPage> {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const RootNavigator()));
+                  Navigator.pushNamed(context, RootNavigator.routeName);
                 },
                 child: Container(
                   height: 60,
@@ -121,16 +117,24 @@ class _LogInPageState extends State<LogInPage> {
                   decoration: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(15)),
-                  child: const ListTile(
-                    leading: Icon(
-                      Icons.g_mobiledata,
-                      size: 60,
-                      color: Colors.white,
-                    ),
-                    title: Text(
-                      "Continue with google",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
+                  child: Row(
+                    children: const [
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Icon(
+                        Icons.g_mobiledata,
+                        color: Colors.white,
+                        size: 60,
+                      ),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        "Continue with Google",
+                        style: TextStyle(color: Colors.white, fontSize: 22),
+                      )
+                    ],
                   ),
                 ),
               ),
@@ -139,11 +143,7 @@ class _LogInPageState extends State<LogInPage> {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const RootNavigator(),
-                      ));
+                  Navigator.pushNamed(context, RootNavigator.routeName);
                 },
                 child: Container(
                   height: 60,
@@ -154,7 +154,7 @@ class _LogInPageState extends State<LogInPage> {
                   child: const ListTile(
                     leading: Icon(
                       Icons.facebook,
-                      size: 50,
+                      size: 40,
                       color: Colors.white,
                     ),
                     title: Text(

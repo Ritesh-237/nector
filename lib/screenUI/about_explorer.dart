@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:nector/utility/colors.dart';
 import 'package:nector/utility/images.dart';
 
-class About extends StatelessWidget {
+class About extends StatefulWidget {
+  static const routeName = '/About';
   const About({super.key});
 
+  @override
+  State<About> createState() => _AboutState();
+}
+
+class _AboutState extends State<About> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

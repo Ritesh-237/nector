@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nector/screenUI/place_order.dart';
 import 'package:nector/utility/colors.dart';
+import 'package:nector/utility/data.dart';
+import 'package:nector/widgets/new_cart_product_tile.dart';
 
 class Cart extends StatelessWidget {
+  static const routeName = '/Cart';
   const Cart({super.key});
 
   @override
@@ -21,15 +24,15 @@ class Cart extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const SizedBox(
-                    height: 20,
-                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        "Checkout",
-                        style: TextStyle(fontSize: 25),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 16.0),
+                        child: Text(
+                          "Checkout",
+                          style: TextStyle(fontSize: 25),
+                        ),
                       ),
                       InkWell(
                         onTap: () {
@@ -43,14 +46,11 @@ class Cart extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Divider(
-                    color: Colors.black26,
-                  ),
-                  const SizedBox(
-                    height: 10,
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 12.0),
+                    child: Divider(
+                      color: Colors.black26,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -63,24 +63,23 @@ class Cart extends StatelessWidget {
                         children: const [
                           Text(
                             "Select Method",
-                            style: TextStyle(color: Colors.black),
                           ),
                           SizedBox(
                             width: 5,
                           ),
-                          Icon(Icons.arrow_forward_ios_outlined),
+                          Icon(
+                            Icons.arrow_forward_ios_outlined,
+                            color: Colors.grey,
+                          ),
                         ],
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Divider(
-                    color: Colors.black26,
-                  ),
-                  const SizedBox(
-                    height: 10,
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 14.0),
+                    child: Divider(
+                      color: Colors.black26,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -95,23 +94,27 @@ class Cart extends StatelessWidget {
                       Container(
                         height: 20,
                         width: 30,
-                        decoration: const BoxDecoration(color: Colors.black),
+                        decoration: BoxDecoration(
+                            color: Colors.green,
+                            borderRadius: BorderRadius.circular(5)),
+                        child: const Center(
+                            child: Text(
+                          "₹",
+                          style: TextStyle(color: Colors.white),
+                        )),
                       ),
                       const Icon(
                         Icons.arrow_forward_ios,
-                        color: Colors.black,
+                        color: Colors.grey,
                         size: 25,
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Divider(
-                    color: Colors.black26,
-                  ),
-                  const SizedBox(
-                    height: 10,
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 14.0),
+                    child: Divider(
+                      color: Colors.black26,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -121,24 +124,21 @@ class Cart extends StatelessWidget {
                         style: TextStyle(fontSize: 20, color: Colors.grey),
                       ),
                       SizedBox(
-                        width: 140,
+                        width: 130,
                       ),
                       Text("Pick discount"),
                       Icon(
                         Icons.close,
-                        color: Colors.black,
+                        color: Colors.grey,
                         size: 25,
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Divider(
-                    color: Colors.black26,
-                  ),
-                  const SizedBox(
-                    height: 10,
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 14.0),
+                    child: Divider(
+                      color: Colors.black26,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -153,19 +153,20 @@ class Cart extends StatelessWidget {
                       Text("\$13.97"),
                       Icon(
                         Icons.close,
-                        color: Colors.black,
+                        color: Colors.grey,
                         size: 25,
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Divider(
-                    color: Colors.black26,
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 14.0),
+                    child: Divider(
+                      color: Colors.black26,
+                    ),
                   ),
                   const Text(
-                    "By placing an order you agree to our Terms And Conditions  ",
+                    "By placing an order you agree to \nour Terms And Conditions  ",
+                    textAlign: TextAlign.center,
                     style: TextStyle(color: Colors.grey),
                   ),
                   const SizedBox(
@@ -173,10 +174,7 @@ class Cart extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: (() {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: ((context) => const Placeorder())));
+                      Navigator.pushNamed(context, Placeorder.routeName);
                     }),
                     child: Container(
                       height: 50,
@@ -247,103 +245,16 @@ class Cart extends StatelessWidget {
           Expanded(
               child: ListView.builder(
                   // shrinkWrap: true,
-                  itemCount: 10,
-                  itemBuilder: (context, index) => const Cartview()))
+                  itemCount: 20,
+                  itemBuilder: (context, index) => Cartview(
+                        imgData: getBestSellingImages[index],
+                        namesdata: vegetableNames[index],
+                      ))),
+          const SizedBox(
+            height: 60,
+          )
         ]),
       ),
     );
-  }
-}
-
-class Cartview extends StatelessWidget {
-  const Cartview({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return (Column(
-      children: [
-        const SizedBox(
-          height: 20,
-        ),
-        ListTile(
-          leading: Image.asset("lib/assets/images/capcicum.png"),
-          title: Row(
-            children: [
-              RichText(
-                  text: const TextSpan(
-                      style: TextStyle(color: Colors.black),
-                      children: [
-                    TextSpan(
-                        text: "Bell Pepper Red\n",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15)),
-                    TextSpan(text: "1kg,price"),
-                  ])),
-              const SizedBox(
-                width: 130,
-              ),
-              const Icon(
-                Icons.close,
-                size: 26,
-              )
-            ],
-          ),
-          subtitle: Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: Row(
-              children: [
-                Container(
-                    height: 25,
-                    width: 25,
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(7)),
-                    child: const Center(
-                        child: Text(
-                      "-",
-                      style: TextStyle(fontSize: 25),
-                    ))),
-                const SizedBox(
-                  width: 15,
-                ),
-                const Text(
-                  "1",
-                  style: TextStyle(fontSize: 20),
-                ),
-                const SizedBox(
-                  width: 15,
-                ),
-                Container(
-                  height: 25,
-                  width: 25,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(7)),
-                  child: const Center(
-                    child: Icon(
-                      Icons.add,
-                      size: 18,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 120,
-                ),
-                const Text(
-                  "\$4.99",
-                  style: TextStyle(color: Colors.black, fontSize: 20),
-                )
-              ],
-            ),
-          ),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        const Divider(
-          color: Colors.black12,
-        )
-      ],
-    ));
   }
 }

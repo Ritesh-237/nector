@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Help extends StatelessWidget {
+class Help extends StatefulWidget {
+  static const routeName = '/Help';
   const Help({super.key});
 
+  @override
+  State<Help> createState() => _HelpState();
+}
+
+class _HelpState extends State<Help> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
