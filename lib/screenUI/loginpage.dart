@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nector/screenUI/mobile_login.dart';
 import 'package:nector/screenUI/navigator.dart';
 import 'package:nector/utility/images.dart';
 import 'package:nector/utility/screen_util.dart';
@@ -15,6 +14,8 @@ class LogInPage extends StatefulWidget {
 TextEditingController phonecontroller = TextEditingController();
 
 class _LogInPageState extends State<LogInPage> {
+  bool _obscureText = true;
+
   @override
   void initState() {
     super.initState();
@@ -41,64 +42,61 @@ class _LogInPageState extends State<LogInPage> {
                 height: 10,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: TextFormField(
-                  controller: phonecontroller,
+                  maxLength: 10,
+                  obscureText: _obscureText,
                   decoration: InputDecoration(
-                    prefixIcon: Row(
-                      children: const [
-                        Padding(
-                          padding: EdgeInsets.only(left: 15.0),
-                          child: Text(
-                            "+91",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        Icon(Icons.flag)
-                      ],
+                    counterText: "",
+                    labelText: "Phone Number",
+                    hintText: "Enter your Phone Number",
+                    prefixText: "+91",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.black)),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.black)),
                   ),
+                  // validator: (value) {
+                  //   if (value == null || value.isEmpty) {
+                  //     return "Please enter your password";
+                  //   } else if (value.length < 6) {
+                  //     return "Password must be at least 6 characters";
+                  //   }
+                  //   return null;
+                  // },
                 ),
               ),
               const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, MobileLogIn.routeName);
-
-                      // context.push(const MobileLogIn());
-                    },
-                    child: Container(
-                      height: 40,
-                      width: 70,
-                      decoration: BoxDecoration(
-                          color: Colors.green.shade400,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: const Center(child: Text("signup")),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: TextFormField(
+                  obscureText: _obscureText,
+                  decoration: InputDecoration(
+                    labelText: "Password",
+                    hintText: "Enter your password",
+                    prefixIcon: const Icon(Icons.lock),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscureText ? Icons.visibility_off : Icons.visibility,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscureText = !_obscureText;
+                        });
+                      },
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, RootNavigator.routeName);
-                    },
-                    child: Container(
-                      height: 40,
-                      width: 70,
-                      decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: const Center(child: Text("LogIn")),
-                    ),
-                  ),
-                ],
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Please enter your password";
+                    } else if (value.length < 6) {
+                      return "Password must be at least 6 characters";
+                    }
+                    return null;
+                  },
+                ),
               ),
               const SizedBox(
                 height: 20,
@@ -117,8 +115,8 @@ class _LogInPageState extends State<LogInPage> {
                   decoration: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(15)),
-                  child: Row(
-                    children: const [
+                  child: const Row(
+                    children: [
                       SizedBox(
                         width: 10,
                       ),

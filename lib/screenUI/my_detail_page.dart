@@ -12,112 +12,146 @@ class MyDetail extends StatefulWidget {
 class _MyDetailState extends State<MyDetail> {
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
         leading: InkWell(
-          onTap: () {
-            Navigator.pop(context);
-          },
+          onTap: () => Navigator.pop(context),
           child: const Icon(
             Icons.arrow_back_ios_new_sharp,
             color: Colors.black,
           ),
         ),
         title: const Text(
-          "Detail",
-          style: TextStyle(color: Colors.black, fontSize: 25),
+          "My Details",
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
         ),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
         child: Column(
           children: [
-            const Divider(
-              color: Colors.black45,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Image.asset(
-                "lib/assets/images/profile.png",
-                height: 150,
+            /// Profile Picture with Circle & Shadow
+            CircleAvatar(
+              radius: 60,
+              backgroundColor: Colors.grey.shade200,
+              child: ClipOval(
+                child: Image.asset(
+                  "lib/assets/images/profile.png",
+                  fit: BoxFit.cover,
+                  width: 110,
+                  height: 110,
+                ),
               ),
             ),
+            const SizedBox(height: 16),
+
             const Text(
               "Customer Name",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                    focusColor: Colors.green,
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black),
-                        borderRadius: BorderRadius.all(Radius.circular(10)))),
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black),
-                        borderRadius: BorderRadius.all(Radius.circular(10)))),
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: TextFormField(
-                decoration: InputDecoration(
-                    prefixIcon: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        Padding(
-                          padding: EdgeInsets.only(left: 16.0),
-                          child: Text("+91"),
-                        ),
-                        Icon(
-                          Icons.flag,
-                          color: Colors.green,
-                        )
-                      ],
-                    ),
-                    fillColor: Colors.black,
-                    border: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.black,
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(10)))),
-              ),
-            ),
-            const SizedBox(
-              height: 40,
-            ),
-            Container(
-              height: 50,
-              width: 300,
-              decoration: BoxDecoration(
-                  color: AppColours.primarycolour,
-                  borderRadius: BorderRadius.circular(8)),
-              child: const Center(
-                  child: Text(
-                "Save Changes",
+
+            const SizedBox(height: 30),
+
+            /// Section Heading
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Profile Information",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20),
-              )),
+                  color: Colors.grey.shade700,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            const SizedBox(height: 12),
+
+            /// Name Field
+            TextFormField(
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.person),
+                labelText: "Full Name",
+                hintText: "Enter your name",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+            ),
+            const SizedBox(height: 15),
+
+            /// Email Field
+            TextFormField(
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.email),
+                labelText: "Email",
+                hintText: "Enter your email",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+            ),
+            const SizedBox(height: 15),
+
+            /// Phone Field
+            TextFormField(
+              keyboardType: TextInputType.phone,
+              decoration: InputDecoration(
+                prefixIcon: const Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox(width: 12),
+                    Text("+91 ",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16)),
+                    Icon(Icons.flag, color: Colors.green),
+                    SizedBox(width: 8),
+                  ],
+                ),
+                labelText: "Phone Number",
+                hintText: "Enter your phone number",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 40),
+
+            /// Save Button
+            SizedBox(
+              width: screenWidth * 0.9,
+              height: 50,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColours.primarycolour,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  elevation: 4,
+                ),
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("Changes saved ✅")),
+                  );
+                },
+                child: const Text(
+                  "Save Changes",
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+              ),
             ),
           ],
         ),

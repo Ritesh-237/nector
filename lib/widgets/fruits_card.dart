@@ -14,7 +14,7 @@ class OfferBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 240,
+      height: 260,
       width: 160,
       margin: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(

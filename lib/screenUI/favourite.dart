@@ -10,35 +10,42 @@ class FavouriteCart extends StatefulWidget {
 }
 
 class _FavouriteCartState extends State<FavouriteCart> {
-  double index = 0;
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        elevation: 0,
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          elevation: 0,
-          backgroundColor: Colors.white,
-          centerTitle: true,
-          title: const Text(
-            "Favourite",
-            style: TextStyle(color: Colors.black),
+        centerTitle: true,
+        title: const Text(
+          "My Favourites",
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
           ),
         ),
-        body: Column(
-          children: [
-            ListView.builder(
+      ),
+      body: favouriteImages.isEmpty
+          ? const Center(
+              child: Text(
+                "No favourites yet ❤️",
+                style: TextStyle(fontSize: 18, color: Colors.grey),
+              ),
+            )
+          : ListView.builder(
+              padding: EdgeInsets.all(screenWidth * 0.04),
               itemCount: favouriteImages.length,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              scrollDirection: Axis.vertical,
               itemBuilder: (context, index) => Favourite(
                 name: favouriteNames[index],
                 imgData: favouriteImages[index],
               ),
             ),
-          ],
-        ));
+    );
   }
 }
 
@@ -49,52 +56,83 @@ class Favourite extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        // const SizedBox(
-        //   height: 10,
-        // ),
-        const Divider(
-          color: Colors.black87,
-        ),
-        InkWell(
-          onTap: () => showErrorToast(context),
-          child: ListTile(
-            leading: SizedBox(
-              width: 55,
-              child: Image.asset(
-                imgData,
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    return Card(
+      margin: EdgeInsets.symmetric(vertical: screenWidth * 0.02),
+      elevation: 3,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(12),
+        onTap: () => showErrorToast(context),
+        child: Padding(
+          padding: EdgeInsets.all(screenWidth * 0.03),
+          child: Row(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.asset(
+                  imgData,
+                  width: screenWidth * 0.18,
+                  height: screenWidth * 0.18,
+                  // fit: BoxFit.cover,
+                ),
               ),
-            ),
-            title: Text(
-              name,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
-            subtitle: const Text("325ml,price"),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: const [
-                Text(
-                  "\$1.50",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+              SizedBox(width: screenWidth * 0.04),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    const Text(
+                      "325ml, Price",
+                      style: TextStyle(color: Colors.grey, fontSize: 14),
+                    ),
+                  ],
                 ),
-                SizedBox(
-                  width: 10,
-                ),
-                Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  size: 20,
-                )
-              ],
-            ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  const Text(
+                    "\$1.50",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                      color: Colors.green,
+                    ),
+                  ),
+                  IconButton(
+                    icon: const Icon(
+                      Icons.favorite,
+                      color: Colors.red,
+                    ),
+                    onPressed: () {
+                      showErrorToast(context);
+                    },
+                  )
+                ],
+              ),
+            ],
           ),
         ),
-      ],
+      ),
     );
   }
 }
 
 showErrorToast(BuildContext context) {
-  return ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      duration: Duration(seconds: 1), content: Text("coming soon")));
+  return ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(
+      duration: Duration(seconds: 1),
+      content: Text("Coming soon 🚀"),
+    ),
+  );
 }

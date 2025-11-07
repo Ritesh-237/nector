@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nector/screenUI/about_explorer.dart';
 import 'package:nector/screenUI/accountcart.dart';
-import 'package:nector/screenUI/cart.dart';
 import 'package:nector/screenUI/delivery_address.dart';
 import 'package:nector/screenUI/explore_page.dart';
 import 'package:nector/screenUI/favourite.dart';
@@ -25,7 +24,7 @@ class Routes {
         FavouriteCart.routeName: (context) => const FavouriteCart(),
         About.routeName: (context) => const About(),
         Accountcart.routeName: (context) => const Accountcart(),
-        Cart.routeName: (context) => const Cart(),
+        // Cart.routeName: (context) => const Cart(),
         DeliveryAddress.routename: (context) => const DeliveryAddress(),
         ExplorePage.routeName: (context) => const ExplorePage(),
         FruitApi.routeName: (context) => const FruitApi(),
